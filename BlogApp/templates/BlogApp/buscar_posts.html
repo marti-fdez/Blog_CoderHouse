@@ -18,7 +18,7 @@
                     </form>
                     {% if articulo_buscado %}
                     {% for articulo in articulo_buscado %}
-                    <li>Id: {{articulo.id}} - Fecha: {{articulo.fecha_publicacion}} - Temática: {{articulo.tematica}} - Pág: {{articulo.cant_paginas}} - Autor: {{articulo.autor_id}}</li>
+                    <li>Id: {{articulo.id}} - Fecha: {{articulo.fecha_publicacion}} - Temática: {{articulo.tematica}} - Pág: {{articulo.cant_paginas}} - Autor: {{articulo.autor.nombre}} {{articulo.autor.apellido}}</li>
                     {% endfor %}
                     {% endif%}
                 </div>
