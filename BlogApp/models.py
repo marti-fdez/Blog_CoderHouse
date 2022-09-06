@@ -16,6 +16,7 @@ class Blogger(models.Model):
 
 class Articulo(models.Model):
     autor = models.ForeignKey('Blogger', on_delete = models.CASCADE)
+    nombre = models.CharField(max_length=250, default="Articulo Python")
     fecha_publicacion = models.DateField()
     tematica = models.CharField(max_length=250)
     cantidad_paginas = models.IntegerField()
