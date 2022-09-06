@@ -1,8 +1,10 @@
 {% extends "BlogApp/base.html" %}
 
-{% block contenido_base %}
+{% load static %}
+     
+{% block contenido_no_heredado %}   
 
-
+<title>Inicio</title>
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -10,7 +12,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Blog Python</h1>
-                    <span class="subheading">Bienvenido al mejor Blog de Python!</span>
+                    <span class="subheading">¡Bienvenido al mejor Blog de Python sobre Python!</span>
                 </div>
             </div>
         </div>
@@ -22,22 +24,23 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
             <!-- Post preview-->
             <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                    <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                <a href="{% url 'articulos'%}">
+                    <h2 class="post-title">Por qué deberías aprender Python, sea cual sea tu profesión</h2>
+                    <h5 class="post-subtitle">Si has topado con algún ranking de lenguajes de programación es muy probable que te hayas encontrado con que aprender Python está arriba en...</h5>
                 </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 24, 2022
+                <p style="color: rgb(7, 121, 64);"class="post-meta">
+                    Escrito por
+                    José María López
+                    el September 02, 2022
                 </p>
             </div>
-            <!-- Divider-->
-            <hr class="my-4" />
-            <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+
+            
+            
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{% url 'articulos'%}">Leer Artículo →</a></div>
         </div>
     </div>
 </div>
 
-{% endblock contenido_base %}
+{% endblock contenido_no_heredado %}      
+        

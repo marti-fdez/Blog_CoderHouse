@@ -6,8 +6,6 @@ class Profesion(models.Model):
     nombre = models.CharField(max_length=100)
     sueldo = models.IntegerField()
 
-
-
 class Blogger(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)

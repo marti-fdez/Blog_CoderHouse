@@ -1,0 +1,60 @@
+{% extends "BlogApp/base.html" %}
+{% load static %}
+
+{% block contenido_no_heredado %}
+<title>Administración</title>
+
+<style>
+    div.mensaje{
+        padding: 2%;
+        color: white;
+        background-color: grey;
+        font-weight: bold;        
+        font-size: 120%;
+    }
+    header{
+        padding-top: 7%; 
+        padding-bottom: 2.5%; 
+
+        width:100%;
+    }
+    div.header{
+        display: flex;
+        width: 100%;
+    }
+    a.flex{
+        margin-left: 5%;
+        margin-right: 5%;
+        color:white;
+        flex: 20%;
+        padding: 1%;
+        text-align: center;
+        font-weight: bold;
+        border: solid 2px black;
+        border-radius: 5px;
+        background-color: grey;
+    }
+    a.flex:hover{
+        color:black
+    }
+</style>
+
+
+{% if mensaje %}
+    <div class = "mensaje">
+        {{mensaje}}
+    </div>
+{% endif %}
+
+
+<!-- Page Header-->
+<header>
+    <div class = "header">
+        <a class = "flex" href="{% url 'crear-datos' %}">Creación de Datos</a>
+        <a class = "flex" href="{% url 'buscar-articulos' %}">Búsqueda de Datos</a>
+    </div>
+    
+</header>
+
+
+{% endblock contenido_no_heredado %}

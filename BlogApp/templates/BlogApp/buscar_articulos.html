@@ -1,0 +1,37 @@
+{% extends "BlogApp/base.html" %}
+
+{% block contenido_no_heredado %}
+
+<title>Búsqueda de datos</title>
+
+
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <p class="subheading">Búsqueda de Datos</p>
+                    <p>Ingresa la temática del artículo de interés</p>
+                    <form class="m-3 card bg-dark w-75 text-left center" action="{% url "action-buscar-articulo" %}" method="GET">
+                    {% csrf_token %}
+                    {{ formulario_buscar.as_p }}
+                    <input type="submit" value="Buscar">
+                    </form>
+                    {% if articulo_buscado %}
+                        {% for articulo in articulo_buscado %}
+                        <li>Id: {{articulo.id}} - Fecha: {{articulo.fecha_publicacion}} - Temática: {{articulo.tematica}} - Pág: {{articulo.cant_paginas}} - Autor: {{articulo.autor.nombre}} {{articulo.autor.apellido}}</li>
+                        {% endfor %}
+                    {% else %}
+                        <p>No se ha encontrado ningún artículo con la temática "{{data}}"</p>    
+                    {% endif%}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% endblock contenido_no_heredado %}
