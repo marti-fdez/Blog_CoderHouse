@@ -4,32 +4,97 @@
 
 <title>Búsqueda de datos</title>
 
-<!-- Page Header-->
-<header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-    <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="site-heading">
-                    <p class="subheading">Búsqueda de Datos</p>
-                    <p>Ingresa la temática del artículo de interés</p>
-                    <form  class="m-3 card bg-dark w-75 text-left center" action="{% url "action-buscar-articulo" %}" method="GET">
-                    {% csrf_token %}
-                    {{ formulario_buscar.as_p }}
-                    <input type="submit" value="Buscar">
-                    </form>
-                    {% if articulo_buscado %}
-                        {% for articulo in articulo_buscado %}
-                        <li>Id: {{articulo.id}} - Fecha: {{articulo.fecha_publicacion}} - Temática: {{articulo.tematica}} - Pág: {{articulo.cant_paginas}} - Autor: {{articulo.autor.nombre}} {{articulo.autor.apellido}}</li>
-                        {% endfor %}
-                    {% else %}
-                        <p>No se ha encontrado ningún artículo con la temática "{{data}}"</p>    
-                    {% endif%}
+<style>
+    
+    div.form_title{
+        padding-top: 3%;
+        font-weight: bold;
+        font-family: "Open Sans";
+        padding-left: 6%;
+    }
+    div.title{
+        padding: 2%;
+        font-size: 180%;
+        text-align: center;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        font-family:"Open Sans";
+    }
+    div.bloque_forms{
+        width: 100%;
+        padding-left: 20%;
+        padding-right: 20%; 
+    }
+    div.form_bloque{
+        width: 100%;
+        margin-bottom: 3%;
+        
+    }
 
-                </div>
+    form.form_estilo{
+        width: 100%;
+        background-color: rgb(70, 77, 83);
+        color: white;
+        font-size: 90%;
+        border: solid 3px black;
+        border-bottom: none;
+     
+    }
+    div.atributos{
+        padding-left: 6%;
+        padding-right: 2%;
+        width: 100%;
+    }
+
+    input.submit{
+        width: 100%;
+        font-family:"Open Sans";
+        padding: 1%;
+        font-weight: bold;
+        border-bottom: solid 3px black;
+        
+    }
+    input.submit:hover{
+        background-color: black;
+        color: white;
+    }
+
+</style>
+
+<br><br><br>
+<!-- Page Header-->
+<div class="title">Búsqueda de Datos</div>
+
+<div class="bloque_forms">
+    <div class="form_bloque">
+        <form class="form_estilo" action="{% url "action-buscar-articulo" %}" method="GET">
+            <div class="form_title">Filtra escribiendo la temática del artículo de interés:</div>
+            <div class="atributos">
+                {% csrf_token %}
+                {{ formulario_buscar.as_p }}
             </div>
-        </div>
+            <input class="submit" type="submit" value="Buscar Artículo">
+        </form>
     </div>
-</header>
+    <div class="form_bloque">
+        <p><b>RESULTADO:</b></p>
+            {% if articulo_buscado %}
+            {% for articulo in articulo_buscado %}
+                <li style = "padding-bottom: 1.5%;">
+                    <b>Nombre</b>: {{articulo.nombre}} 
+                    | <b>Fecha</b>: {{articulo.fecha_publicacion}} 
+                    | <b>Temática</b>: {{articulo.tematica}} 
+                    | <b>Cantidad de páginas</b>: {{articulo.cantidad_paginas}} <br>
+                    --> <b>Autor</b>: {{articulo.autor.nombre}} {{articulo.autor.apellido}} 
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>No se ha encontrado ningún artículo con la temática "{{data}}".</p>    
+        {% endif%}
+    </div>
+
+</div>
+
 
 
 {% endblock contenido_no_heredado %}
