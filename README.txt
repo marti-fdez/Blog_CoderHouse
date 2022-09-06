@@ -25,9 +25,34 @@ diferentes acciones CRUD.
 Como para esta entrega solo se necesitaba de CREATE Y READ, solo estan funcionales la opcion de crear datos y buscar artículos.
 Si se crean los registros correctamente arrojarán un mensaje conforme lo ha hecho con éxito.
 
+Atributos de ejemplo para comprobar funcionamiento de creación de datos:
+
+UNA PROFESIÓN DE EJEMPLO:
+- Nombre: Escritor
+- Sueldo: 1900
+
+UN BLOGGER DE EJEMPLO:
+ - Nombre: Juan
+ - Apellido: Gómez 
+ - Profesión: Escritor (debe de ser un registro del modelo de Profesión)
+ - Telefono: 456897523
+ - juan@gmail.com
+
+UN ARTÍCULO DE EJEMPLO:
+ - Autor: Juan
+ - Nombre: Crea tu primer SmartContract
+ - Temática: Cryptocurrency
+ - Fecha:  2020-10-05  (YYYY-MM-DD)
+ - Cantidad páginas: 10
+
+
 Los artículos se deberan filtrar por su temática.
 Al filtrar nos mostrará información de los todos los articulos con la temática filtrada, sin embargo si no hay una temática con la que se corresponda,
 nos mostrará que no ha encontrado nada parecido con esta temática.
+
+Ejemplo de búsqueda:
+ - tematica = Python = Mostrará la información de los articulo con esa temática.
+ - tematica = Cualquier cosa = No se ha encontrado ningún artículo con la temática "tematica escrita"
 
 Como extra, hay una pestaña de "Artículos" con un artículo de ejemplo, esta ahí temporalmente, tenemos pensado poner ahí como un menú con los artículos 
 recomendados y una barra de búsqueda para buscar cualquier articulo del blog y poder acceder a él mediante un botón.
@@ -35,4 +60,3 @@ recomendados y una barra de búsqueda para buscar cualquier articulo del blog y 
 En cuanto a la herencia HTML, todas las páginas heredan al "nav_bar", la barra de navegacíon y el footer con las redes sociales, en github hemos linkado 
 nuestro propio repositorio.
 
- 

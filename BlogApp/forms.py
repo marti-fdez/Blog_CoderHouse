@@ -16,8 +16,8 @@ class CrearBlogger(forms.Form):
 class CrearArticulo(forms.Form):
     autor = forms.CharField(max_length=100)
     nombre = forms.CharField(max_length=250)
-    fecha_publicacion = forms.DateField(widget=forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'required': 'required'}))
     tematica = forms.CharField(max_length=100)
+    fecha_publicacion = forms.DateField(widget=forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'required': 'required'}))
     cantidad_paginas = forms.IntegerField()
 
 class BuscarArticulo(forms.Form):
