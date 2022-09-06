@@ -1,0 +1,86 @@
+{% extends "BlogApp/base.html" %}
+{% load static %}
+
+{% block contenido_no_heredado %}
+<title>Administración</title>
+<br><br>
+<style>
+    div.mensaje{
+        width: 100%;
+        padding: 0.5%;
+        margin-bottom: 2%;
+        text-align: center;
+        color: white;
+        background-color: grey;
+        font-weight: bold;        
+        font-size: 90%;
+    }
+    header{
+        display: block;
+        padding: 3%;
+        padding-bottom: 0;
+        width:100%;
+    }
+    div.title{
+        padding: 2%;
+        font-size: 180%;
+        text-align: center;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        font-family:"Open Sans";
+    }
+    div.crud{
+        display: flex;
+        width: 100%;
+        padding-bottom: 2%;
+        padding-top: 1%;
+    }
+    
+    a.flex{
+        margin-left: 5%;
+        margin-right: 5%;
+        color:white;
+        flex: 20%;
+        padding: 1%;
+        text-align: center;
+        font-weight: bold;
+        border: solid 2px black;
+        border-radius: 5px;
+        background-color: grey;
+        font-family: "Open Sans";
+    }
+    a.flex:hover{
+        color:black;
+        border-color: white;
+        
+    }
+</style>
+
+
+
+
+
+<!-- Page Header-->
+<header>
+    <div class="title" >Administración (CRUD)</div>
+</header>
+{% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+    {% endif %}
+
+<div class = "crud">
+    <a class = "flex" href="{% url 'crear-datos' %}">Creación de Datos</a>
+    <a class = "flex" href="{% url 'buscar-articulos' %}">Búsqueda de Datos</a>
+</div>
+
+<div class = "crud">
+    <a class = "flex" href="#">Actualización de Datos</a>
+    <a class = "flex" href="#">Eliminació de Datos</a>
+</div>
+    
+
+
+
+{% endblock contenido_no_heredado %}
