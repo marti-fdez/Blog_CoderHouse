@@ -11,40 +11,97 @@
         padding-top: 3%;
         font-weight: bold;
         text-decoration: underline;
+        font-family: "Open Sans";
+        padding-left: 6%;
     }
     div.title{
         padding: 2%;
         font-size: 180%;
         text-align: center;
         font-weight: bold;
-        color: grey;
+        color: rgb(0, 0, 0);
+        font-family:"Open Sans";
     }
+    div.bloque_forms{
+        display: flex;
+        width: 100%;
+    }
+    div.form_bloque{
+        flex: 25%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    form.form_estilo{
+        width: 100%;
+        background-color: rgb(70, 77, 83);
+        color: white;
+        font-size: 90%;
+        border: solid 3px black;
+        border-bottom: none;
+     
+    }
+    div.atributos{
+        padding-left: 6%;
+        padding-right: 2%;
+        width: 100%;
+    }
+
+    input.submit{
+        width: 100%;
+        padding: 0%;
+        border: none;
+        border-bottom: solid 3px black;
+        font-family:"Open Sans";
+        padding: 1%;
+        
+    }
+    input.submit:hover{
+        background-color: black;
+        color: white;
+    }
+
+
 </style>
 
-<div class="title">CREACIÓN DE DATOS</div>
+<div class="title">Creación de Datos</div>
 
 <div class="bloque_forms">
-    <form class="m-3 card bg-dark w-75 text-left center" action="{% url "crear-profesion" %}" method="POST">
-        <div class = "form_title">Profesión</div>
-        {% csrf_token %}
-        {{ formulario_profesion.as_p }}
-        <input type="submit" value="Crear Profesión">
-    </form>
+    <div class="form_bloque">
+        <form class="form_estilo" action="{% url "crear-profesion" %}" method="POST">
+            <div class="form_title">PROFESIÓN</div>
+            <div class="atributos">
+                {% csrf_token %}
+                {{ formulario_profesion.as_p }}
+            </div>
+            <input class="submit" type="submit" value="Crear Profesión">
+        </form>
+    </div>
 
-    <form class="m-3 card bg-dark w-75 text-left center" action="{% url "crear-blogger" %}" method="POST">
-        <div class="form_title">Blogger</div>
-        {% csrf_token %}
-        {{ formulario_blogger.as_p }}
-        <input type="submit" value="Crear Blogger">
-    </form>
+    <div class="form_bloque">
+        <form class="form_estilo" action="{% url "crear-blogger" %}" method="POST">
+            <div class="form_title">BLOGGER</div>
+            <div class="atributos">
+                {% csrf_token %}
+                {{ formulario_blogger.as_p }}
+            </div>
+            <input class="submit" type="submit"  value="Crear Blogger">
+        </form>
+    </div>
 
-    <form class="m-3 card bg-dark w-75 text-left center" action="{% url "crear-articulo" %}" method="POST">
-        <div class="form_title">Artículo</div>
-        {% csrf_token %}
-        {{ formulario_articulo.as_p }}
-        <input type="submit" value="Crear Artículo">
-    </form>
+    <div class="form_bloque">
+        <form class="form_estilo" action="{% url "crear-articulo" %}" method="POST">
+            <div class="form_title">ARTÍCULO</div>
+            <div class="atributos">
+                {% csrf_token %}
+                {{ formulario_articulo.as_p }}
+            </div>
+            <input class="submit" type="submit" value="Crear Artículo">
+        </form>
+    </div>
 </div>
 
+
+    
+<br><br>
 
 {% endblock contenido_no_heredado %}   

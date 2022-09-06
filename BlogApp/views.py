@@ -1,5 +1,6 @@
 
 from django.shortcuts import render
+from django.urls import reverse
 
 from BlogApp.forms import BuscarArticulo, CrearArticulo, CrearBlogger, CrearProfesion
 from BlogApp.models import Articulo, Profesion, Blogger
@@ -15,24 +16,25 @@ def articulos(request):
 def administracion(request):
     return render(request, "BlogApp/administracion.html")
 
-def crear_interface(request):
+def crear_datos(request):
     formulario_profesion = CrearProfesion()
     formulario_blogger = CrearBlogger()
     formulario_articulo = CrearArticulo()
     return render(request, "BlogApp/crear_datos.html", {'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
 
 def crear_profesion(request):
-    mensaje = ""
     formulario = CrearProfesion(request.POST)
     if formulario.is_valid():
         data = formulario.cleaned_data
         profesion = Profesion(nombre=data['nombre'],sueldo=data['sueldo'])
         profesion.save()
         mensaje = "¡Profesión creada con éxito!"
-    return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-
+        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+    else:   
+        return reverse('administracion.html')
+        
+    
 def crear_blogger(request):
-    mensaje = ""
     formulario = CrearBlogger(request.POST)
     if formulario.is_valid():
         data = formulario.cleaned_data
@@ -40,8 +42,10 @@ def crear_blogger(request):
         blogger = Blogger(nombre=data['nombre'],apellido=data['apellido'], profesion=profesion_elegida, telefono=data['telefono'], email=data['email'])
         blogger.save()
         mensaje = "¡Blogger creado con éxito!"
-    return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-
+        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+    else:   
+        return reverse('administracion.html')
+        
 def crear_articulo(request):
     mensaje = ""
     formulario = CrearArticulo(request.POST)
@@ -51,7 +55,7 @@ def crear_articulo(request):
         articulo = Articulo(autor=autor_elegido,fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
         articulo.save()
         mensaje = "¡Artículo creado con éxito!"
-    return render(request, 'BlogApp/posts.html', {'mensaje': mensaje})
+    return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
 
 
 def buscar_articulos(request):
