@@ -47,7 +47,6 @@ def crear_blogger(request):
         return reverse('administracion.html')
         
 def crear_articulo(request):
-    mensaje = ""
     formulario = CrearArticulo(request.POST)
     if formulario.is_valid():
         data = formulario.cleaned_data
@@ -55,8 +54,9 @@ def crear_articulo(request):
         articulo = Articulo(autor=autor_elegido,fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
         articulo.save()
         mensaje = "¡Artículo creado con éxito!"
-    return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-
+        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+    else:   
+        return reverse('administracion.html')
 
 def buscar_articulos(request):
     formulario_buscar = BuscarArticulo()
