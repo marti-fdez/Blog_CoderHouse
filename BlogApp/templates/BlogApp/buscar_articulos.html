@@ -4,8 +4,6 @@
 
 <title>Búsqueda de datos</title>
 
-
-
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -14,7 +12,7 @@
                 <div class="site-heading">
                     <p class="subheading">Búsqueda de Datos</p>
                     <p>Ingresa la temática del artículo de interés</p>
-                    <form class="m-3 card bg-dark w-75 text-left center" action="{% url "action-buscar-articulo" %}" method="GET">
+                    <form  class="m-3 card bg-dark w-75 text-left center" action="{% url "action-buscar-articulo" %}" method="GET">
                     {% csrf_token %}
                     {{ formulario_buscar.as_p }}
                     <input type="submit" value="Buscar">
