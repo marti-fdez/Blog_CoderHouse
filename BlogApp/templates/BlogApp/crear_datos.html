@@ -6,6 +6,16 @@
 <title>Crear Objetos</title>
 <div style="margin-top: 5%;" ></div>
 <style>
+     div.mensaje{
+        width: 100%;
+        padding: 0.5%;
+        margin-bottom: 2%;
+        text-align: center;
+        color: white;
+        background-color: grey;
+        font-weight: bold;        
+        font-size: 90%;
+    }
     
     div.form_title{
         padding-top: 3%;
@@ -64,6 +74,11 @@
 
 <div class="title">Creación de Datos</div>
 
+    {% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+    {% endif %}
 <div class="bloque_forms">
     <div class="form_bloque">
         <form class="form_estilo" action="{% url "crear-profesion" %}" method="POST">

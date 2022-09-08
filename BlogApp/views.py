@@ -31,32 +31,51 @@ def crear_profesion(request):
         mensaje = "¡Profesión creada con éxito!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
     else:   
-        return reverse('administracion.html')
+        mensaje = "¡Ha ocurrido un error creando la Profesión!"
+        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
         
     
 def crear_blogger(request):
     formulario = CrearBlogger(request.POST)
     if formulario.is_valid():
         data = formulario.cleaned_data
-        profesion_elegida = Profesion.objects.get(nombre=data['profesion'])
-        blogger = Blogger(nombre=data['nombre'],apellido=data['apellido'], profesion=profesion_elegida, telefono=data['telefono'], email=data['email'])
-        blogger.save()
-        mensaje = "¡Blogger creado con éxito!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+        try:
+            profesion_elegida = Profesion.objects.get(nombre=data['profesion'])
+        except Profesion.DoesNotExist: 
+            mensaje = "¡NO existe esa Profesión!"
+            formulario_profesion = CrearProfesion()
+            formulario_blogger = CrearBlogger()
+            formulario_articulo = CrearArticulo()
+            return render(request, 'BlogApp/crear_datos.html', {'mensaje': mensaje, 'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
+        else:
+            blogger = Blogger(nombre=data['nombre'],apellido=data['apellido'], profesion=profesion_elegida, telefono=data['telefono'], email=data['email'])
+            blogger.save()
+            mensaje = "¡Blogger creado con éxito!"
+            return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
     else:   
-        return reverse('administracion.html')
+        mensaje = "¡Ha ocurrido un error creando el Blogger!"
+        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
         
 def crear_articulo(request):
     formulario = CrearArticulo(request.POST)
     if formulario.is_valid():
         data = formulario.cleaned_data
-        autor_elegido = Blogger.objects.get(nombre=data['autor'])
-        articulo = Articulo(autor=autor_elegido,fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
-        articulo.save()
-        mensaje = "¡Artículo creado con éxito!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+        try:
+            autor_elegido = Blogger.objects.get(nombre=data['autor'])
+        except Blogger.DoesNotExist:
+            mensaje = "¡NO existe ese Autor!"
+            formulario_profesion = CrearProfesion()
+            formulario_blogger = CrearBlogger()
+            formulario_articulo = CrearArticulo()
+            return render(request, 'BlogApp/crear_datos.html', {'mensaje': mensaje, 'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
+        else:    
+            articulo = Articulo(autor=autor_elegido,nombre = data["nombre"],fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
+            articulo.save()
+            mensaje = "¡Artículo creado con éxito!"
+            return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
     else:   
-        return reverse('administracion.html')
+        mensaje = "¡Ha ocurrido un error creando el Artículo!"
+        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
 
 def buscar_articulos(request):
     formulario_buscar = BuscarArticulo()
