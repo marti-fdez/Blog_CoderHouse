@@ -51,7 +51,7 @@ def crear_articulo(request):
     if formulario.is_valid():
         data = formulario.cleaned_data
         autor_elegido = Blogger.objects.get(nombre=data['autor'])
-        articulo = Articulo(autor=autor_elegido,fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
+        articulo = Articulo(autor=autor_elegido,nombre = data["nombre"],fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
         articulo.save()
         mensaje = "¡Artículo creado con éxito!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
