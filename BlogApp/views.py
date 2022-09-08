@@ -87,5 +87,9 @@ def action_buscar_articulo(request):
     if formulario.is_valid():
         data = formulario.cleaned_data
         articulo_buscado = Articulo.objects.filter(tematica__icontains=data['tematica'])
-    formulario_buscar = BuscarArticulo()
-    return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar, "articulo_buscado": articulo_buscado, "data":data['tematica']})
+        if articulo_buscado.exists():
+            formulario_buscar = BuscarArticulo()
+            return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar, "articulo_buscado": articulo_buscado, "articulo_encontrado": True})
+        else:    
+            formulario_buscar = BuscarArticulo()
+            return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar,"articulo_buscado": True, "articulo_encontrado": False,"data":data['tematica']})
