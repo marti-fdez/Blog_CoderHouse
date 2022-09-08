@@ -28,13 +28,13 @@ Si se crean los registros correctamente arrojarán un mensaje conforme lo ha hec
 Atributos de ejemplo para comprobar funcionamiento de creación de datos:
 
 UNA PROFESIÓN DE EJEMPLO:
-- Nombre: Escritor
+- Nombre: Periodista
 - Sueldo: 1900
 
 UN BLOGGER DE EJEMPLO:
  - Nombre: Juan
  - Apellido: Gómez 
- - Profesión: Escritor (debe de ser un registro del modelo de Profesión)
+ - Profesión: Periodista (debe de ser un registro del modelo de Profesión)
  - Telefono: 456897523
  - juan@gmail.com
 
