@@ -60,11 +60,19 @@ def crear_articulo(request):
     formulario = CrearArticulo(request.POST)
     if formulario.is_valid():
         data = formulario.cleaned_data
-        autor_elegido = Blogger.objects.get(nombre=data['autor'])
-        articulo = Articulo(autor=autor_elegido,nombre = data["nombre"],fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
-        articulo.save()
-        mensaje = "¡Artículo creado con éxito!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+        try:
+            autor_elegido = Blogger.objects.get(nombre=data['autor'])
+        except Blogger.DoesNotExist:
+            mensaje = "¡NO existe ese Autor!"
+            formulario_profesion = CrearProfesion()
+            formulario_blogger = CrearBlogger()
+            formulario_articulo = CrearArticulo()
+            return render(request, 'BlogApp/crear_datos.html', {'mensaje': mensaje, 'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
+        else:    
+            articulo = Articulo(autor=autor_elegido,nombre = data["nombre"],fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
+            articulo.save()
+            mensaje = "¡Artículo creado con éxito!"
+            return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
     else:   
         mensaje = "¡Ha ocurrido un error creando el Artículo!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
