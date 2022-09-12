@@ -16,6 +16,7 @@ def articulos(request):
 def administracion(request):
     return render(request, "BlogApp/administracion.html")
 
+#CREATE
 def crear_datos(request):
     formulario_profesion = CrearProfesion()
     formulario_blogger = CrearBlogger()
@@ -77,6 +78,8 @@ def crear_articulo(request):
         mensaje = "¡Ha ocurrido un error creando el Artículo!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
 
+
+#BUSQUEDA
 def buscar_articulos(request):
     formulario_buscar = BuscarArticulo()
     return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar, "articulo_buscado": False})
@@ -93,3 +96,9 @@ def action_buscar_articulo(request):
         else:    
             formulario_buscar = BuscarArticulo()
             return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar,"articulo_buscado": True, "articulo_encontrado": False,"data":data['tematica']})
+
+#UPDATE
+
+#DELETE
+def eliminar_datos(request):
+    return render(request, "BlogApp/delete.html")
