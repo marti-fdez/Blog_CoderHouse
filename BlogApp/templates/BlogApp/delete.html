@@ -10,15 +10,34 @@
     <div class="title">Eliminación de Datos</div>
 </header>
 {% if mensaje %}
-        <div class = "mensaje">
-            {{mensaje}}
-        </div>
-    {% endif %}
-
-<div class = "crud">
-    <a class = "flex" href="{% url 'crear-datos' %}">Eliminar Profesión</a>
-    <a class = "flex" href="{% url 'buscar-articulos' %}">Eliminar Blogger</a>
-    <a class = "flex" href="{% url 'buscar-articulos' %}">Eliminar Artículo</a>
+<div class = "mensaje">
+    {{mensaje}}
 </div>
+    {% endif %}
+    
+    <div class = "crud">
+        <a class = "flex" href="#eliminar-profesion">Eliminar Profesión</a>
+        <a class = "flex" href="#eliminar-blogger">Eliminar Blogger</a>
+        <a class = "flex" href="#eliminar-articulo">Eliminar Artículo</a>
+    </div>
+    
+<div id = "eliminar-profesion" class="bloque_profesion">
+    <div>
+        <table class ="tabla_profesion">
+            <tr>
+                <th class="campos_profesion">ID</th>
+                <th class="campos_profesion">NOMBRE</th>
+                <th class="campos_profesion">SUELDO</th>
+            </tr>
+        
+            <tr>
+                <td class="campos_profesion"> example</td>
+                <td class="campos_profesion">example</td>
+                <td class="campos_profesion">example</td>
+                <td class="boton_eliminar"><a class = "eliminar" href="#">Eliminar</a></td>
+            </tr>
+        </table>
+    </div>
 
+</div>
 {% endblock contenido_no_heredado %}   

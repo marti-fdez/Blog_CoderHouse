@@ -17,8 +17,7 @@ urlpatterns = [
 
     #DELETE
     path('eliminar-datos', eliminar_datos, name="eliminar-datos"),
-    
-    #path('delete-profesion', delete_profesion, name="delete-profesion"),
+    #path('eliminar-profesion', eliminar_profesion, name="eliminar-profesion"),
     #path('delete-articulo', delete_articulo, name="delete-articulo"),
     #path('delete-blogger', delete_blogger, name="delete-blogger"),
 

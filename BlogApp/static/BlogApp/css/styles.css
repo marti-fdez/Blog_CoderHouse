@@ -11369,3 +11369,63 @@ a.flex:hover{
   border-color: white;
   
 }
+
+/* DELETE.HTML */
+
+div.tabla_profesion{
+  display: none;
+  background-color: yellow;
+  padding: 20px;
+}
+
+#eliminar-profesion:target{
+	display: block;
+}
+
+/*------------------------//FORMULARIO//---------------------*/
+
+/*----FORMULARIO Estructura */
+div.bloque_profesion{
+	display: none;
+	background-color: black;
+	color: white;
+  width: 100%;
+  padding-top: 8px;
+}
+table.tabla_profesion{
+  display: block;
+  background-color: black;
+  padding-top: 3%;
+  width: 100%;
+  padding-left: 13.5%;
+  padding-right: 10%;
+}
+
+th.campos_profesion{
+  text-align: center;
+  border: 2px solid white;
+  padding-left: 10%;
+  padding-right: 12%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+td.campos_profesion{
+  text-align: center;
+  font-size: medium;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+td.boton_eliminar{
+  text-align: center;
+  font-size: medium;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 6%;
+  padding-right: 10%;
+  text-align: left; 
+  border: 2px solid white;
+}
+a.eliminar{
+  width: 100%;
+  color:white
+}
