@@ -11422,8 +11422,6 @@ padding-left:2%;
   background-color: #1F2739;
 }
 
-.tabla-eliminar td:first-child { color: #FB667A; }
-
 .tabla-eliminar tr:hover {
  background-color: #464A52;
 -webkit-box-shadow: 0 6px 6px -6px #0E1119;

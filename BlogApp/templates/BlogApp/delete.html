@@ -5,7 +5,8 @@
 {% block contenido_no_heredado %}   
 <title>Eliminar Datos</title>
 
-<div style="margin-top: 5%;" ></div>
+<br><br>
+
 <header class="header">
     <div class="title">Eliminación de Datos</div>
 </header>
@@ -26,48 +27,18 @@
     <table class="tabla-eliminar">
         <thead>
             <tr>
-                <th>Sites</th>
-                <th>Views</th>
-                <th>Clicks</th>
+                <th>NOMBRE</th>
+                <th>SALARIO</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Google</td>
-                <td>9518</td>
-                <td>6369</td>
-                <td class="eliminar">00:31:52</td>
-            </tr>
-            <tr>
-                <td>Twitter</td>
-                <td>7326</td>
-                <td>10437</td>
-                <td class="eliminar">00:31:52</td>
-            </tr>
-            <tr>
-                <td>Amazon</td>
-                <td>4162</td>
-                <td>5327</td>
-                <td class="eliminar">00:31:52</td>
-            </tr>
-        <tr>
-                <td>LinkedIn</td>
-                <td>3654</td>
-                <td>2961</td>
-                <td class="eliminar">00:31:52</td>
-            </tr>
-        <tr>
-                <td>CodePen</td>
-                <td>2002</td>
-                <td>4135</td>
-                <td class="eliminar">00:31:52</td>
-            </tr>
-        <tr>
-                <td>GitHub</td>
-                <td>4623</td>
-                <td>3486</td>
-                <td class="eliminar">00:31:52</td>
-            </tr>
+            {% for profesion in profesiones%}
+                <tr>
+                    <td> {{profesion.nombre}} </td>
+                    <td> {{profesion.sueldo}} $ </td>
+                    <td class="eliminar"><a style="color:red; text-align: center; width: 100%;" href="{% url 'action-eliminar-profesion' profesion.id %}">Eliminar</a></td>
+                </tr>   
+            {% endfor %}
         </tbody>
     </table>
 </div>

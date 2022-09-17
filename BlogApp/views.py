@@ -101,4 +101,18 @@ def action_buscar_articulo(request):
 
 #DELETE
 def eliminar_datos(request):
-    return render(request, "BlogApp/delete.html")
+    get_profesiones = Profesion.objects.all()
+    get_bloggers = Blogger.objects.all()
+    get_articulos = Articulo.objects.all()
+    return render(request, "BlogApp/delete.html", {"profesiones":get_profesiones, "bloggers": get_bloggers, "articulos":get_articulos})
+
+
+def action_eliminar_profesion(request,id):
+    profesion = Profesion.objects.get(id=id)
+    mensaje = f"¡Se ha eliminado la profesión {profesion.nombre}!"
+    profesion.delete()
+    get_profesiones = Profesion.objects.all()
+    get_bloggers = Blogger.objects.all()
+    get_articulos = Articulo.objects.all()
+    
+    return render(request, "BlogApp/delete.html", {"profesiones":get_profesiones, "bloggers": get_bloggers, "articulos":get_articulos , "mensaje":mensaje})

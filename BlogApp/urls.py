@@ -1,5 +1,5 @@
 from django.urls import path
-from BlogApp.views import action_buscar_articulo, buscar_articulos, crear_articulo, crear_blogger, crear_datos, crear_profesion, inicio, articulos, administracion, eliminar_datos
+from BlogApp.views import action_eliminar_profesion, action_buscar_articulo, buscar_articulos, crear_articulo, crear_blogger, crear_datos, crear_profesion, inicio, articulos, administracion, eliminar_datos
 
 urlpatterns = [
     path('', inicio, name="inicio"),
@@ -17,9 +17,8 @@ urlpatterns = [
 
     #DELETE
     path('eliminar-datos', eliminar_datos, name="eliminar-datos"),
-    #path('eliminar-profesion', eliminar_profesion, name="eliminar-profesion"),
-    #path('delete-articulo', delete_articulo, name="delete-articulo"),
-    #path('delete-blogger', delete_blogger, name="delete-blogger"),
+    path('action-eliminar-profesion/<int:id>/', action_eliminar_profesion, name="action-eliminar-profesion"),
+    
 
     #BÚSQUEDA
     path('buscar-articulos', buscar_articulos, name="buscar-articulos"),
