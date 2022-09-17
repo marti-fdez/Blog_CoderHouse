@@ -11371,15 +11371,83 @@ a.flex:hover{
 }
 
 /* DELETE.HTML */
-
-div.tabla_profesion{
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+div.eliminar-profesion{
   display: none;
-  background-color: yellow;
-  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color:#A7A1AE;
+  background-color:#1F2739;
 }
 
 #eliminar-profesion:target{
 	display: block;
+}
+
+.tabla-eliminar td {
+  font-weight: normal;
+  font-size: 1em;
+-webkit-box-shadow: 0 2px 2px -2px #0E1119;
+   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.tabla-eliminar {
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+display: table;
+padding: 0 0 8em 0;
+}
+
+.tabla-eliminar td, .tabla-eliminar th {
+  padding-bottom: 2%;
+  padding-top: 2%;
+padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.tabla-eliminar tr:nth-child(odd) {
+  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.tabla-eliminar tr:nth-child(even) {
+  background-color: #2C3446;
+}
+
+.tabla-eliminar th {
+  background-color: #1F2739;
+}
+
+.tabla-eliminar td:first-child { color: #FB667A; }
+
+.tabla-eliminar tr:hover {
+ background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.tabla-eliminar td.eliminar:hover {
+background-color: #FFF842;
+color: #403E10;
+font-weight: bold;
+
+box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+transform: translate3d(6px, -6px, 0);
+
+transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+.tabla-eliminar td:nth-child(4),
+.tabla-eliminar th:nth-child(4) { display: none; }
 }
 
 /*------------------------//FORMULARIO//---------------------*/

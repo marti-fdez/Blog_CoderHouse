@@ -10,34 +10,65 @@
     <div class="title">Eliminación de Datos</div>
 </header>
 {% if mensaje %}
-<div class = "mensaje">
-    {{mensaje}}
+    <div class = "mensaje">
+        {{mensaje}}
+    </div>
+{% endif %}
+    
+<div class = "crud">
+    <a class = "flex" href="#eliminar-profesion">Eliminar Profesión</a>
+    <a class = "flex" href="#eliminar-blogger">Eliminar Blogger</a>
+    <a class = "flex" href="#eliminar-articulo">Eliminar Artículo</a>
 </div>
-    {% endif %}
-    
-    <div class = "crud">
-        <a class = "flex" href="#eliminar-profesion">Eliminar Profesión</a>
-        <a class = "flex" href="#eliminar-blogger">Eliminar Blogger</a>
-        <a class = "flex" href="#eliminar-articulo">Eliminar Artículo</a>
-    </div>
-    
-<div id = "eliminar-profesion" class="bloque_profesion">
-    <div>
-        <table class ="tabla_profesion">
-            <tr>
-                <th class="campos_profesion">ID</th>
-                <th class="campos_profesion">NOMBRE</th>
-                <th class="campos_profesion">SUELDO</th>
-            </tr>
-        
-            <tr>
-                <td class="campos_profesion"> example</td>
-                <td class="campos_profesion">example</td>
-                <td class="campos_profesion">example</td>
-                <td class="boton_eliminar"><a class = "eliminar" href="#">Eliminar</a></td>
-            </tr>
-        </table>
-    </div>
 
+<div class= "eliminar-profesion" id = "eliminar-profesion">
+        
+    <table class="tabla-eliminar">
+        <thead>
+            <tr>
+                <th>Sites</th>
+                <th>Views</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Google</td>
+                <td>9518</td>
+                <td>6369</td>
+                <td class="eliminar">00:31:52</td>
+            </tr>
+            <tr>
+                <td>Twitter</td>
+                <td>7326</td>
+                <td>10437</td>
+                <td class="eliminar">00:31:52</td>
+            </tr>
+            <tr>
+                <td>Amazon</td>
+                <td>4162</td>
+                <td>5327</td>
+                <td class="eliminar">00:31:52</td>
+            </tr>
+        <tr>
+                <td>LinkedIn</td>
+                <td>3654</td>
+                <td>2961</td>
+                <td class="eliminar">00:31:52</td>
+            </tr>
+        <tr>
+                <td>CodePen</td>
+                <td>2002</td>
+                <td>4135</td>
+                <td class="eliminar">00:31:52</td>
+            </tr>
+        <tr>
+                <td>GitHub</td>
+                <td>4623</td>
+                <td>3486</td>
+                <td class="eliminar">00:31:52</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 {% endblock contenido_no_heredado %}   
