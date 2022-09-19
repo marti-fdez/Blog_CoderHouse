@@ -1,6 +1,7 @@
 
 from django.db import models
 
+
 # Create your models here.
 class Profesion(models.Model):
     nombre = models.CharField(max_length=100)

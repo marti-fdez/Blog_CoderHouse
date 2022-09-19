@@ -5,6 +5,9 @@ from django.urls import reverse
 from BlogApp.forms import BuscarArticulo, CrearArticulo, CrearBlogger, CrearProfesion
 from BlogApp.models import Articulo, Profesion, Blogger
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
 def inicio(request):
@@ -13,15 +16,18 @@ def inicio(request):
 def articulos(request):
     return render(request, "BlogApp/articulos.html")
 
+@login_required
 def administracion(request):
     return render(request, "BlogApp/administracion.html")
 
+@login_required
 def crear_datos(request):
     formulario_profesion = CrearProfesion()
     formulario_blogger = CrearBlogger()
     formulario_articulo = CrearArticulo()
     return render(request, "BlogApp/crear_datos.html", {'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
 
+@login_required
 def crear_profesion(request):
     formulario = CrearProfesion(request.POST)
     if formulario.is_valid():
@@ -34,7 +40,7 @@ def crear_profesion(request):
         mensaje = "¡Ha ocurrido un error creando la Profesión!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
         
-    
+@login_required
 def crear_blogger(request):
     formulario = CrearBlogger(request.POST)
     if formulario.is_valid():
@@ -56,6 +62,7 @@ def crear_blogger(request):
         mensaje = "¡Ha ocurrido un error creando el Blogger!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
         
+@login_required
 def crear_articulo(request):
     formulario = CrearArticulo(request.POST)
     if formulario.is_valid():

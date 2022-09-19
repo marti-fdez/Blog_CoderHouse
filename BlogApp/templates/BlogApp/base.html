@@ -31,12 +31,28 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'articulos' %}">Artículos</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'administracion' %}">Administración</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#">Nosotros</a></li>
+                        {% if user.is_authenticated %}
+                        {% if user.avatar.imagen.url %}
+                            <a href="{% url 'update-avatar' user.avatar.id %}"><img src="{{user.avatar.imagen.url}}" width="66px" class="rounded-circle"></a>
+                        {% else %}
+                            <a href="{% url 'crear-avatar' %}"><img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="66px" class="rounded-circle"></a>
+                        {% endif %}
+                        <a class="btn btn-danger" href={% url 'logout' %}>LOGOUT</a>
+                        <a class="btn btn-primary" href={% url 'update-user' %}>Editar Perfil</a>
+                    {% else %}
+                        <a class="btn btn-primary" href={% url 'signup' %}>REGISTRARSE</a>
+                        <a class="btn btn-primary" href={% url 'login' %}>LOGIN</a>
+                    {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
-        
-
+        {% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+        {% endif %}
+    
 
 {% block contenido_no_heredado %}
 

@@ -3,6 +3,19 @@
 {% load static %}
      
 {% block contenido_no_heredado %}   
+<style>
+    div.mensaje{
+       width: 100%;
+       padding: 0.5%;
+       margin-bottom: 2%;
+       text-align: center;
+       color: white;
+       background-color: grey;
+       font-weight: bold;        
+       font-size: 90%;
+   }
+
+</style>
 
 <title>Inicio</title>
 <!-- Page Header-->
@@ -17,7 +30,13 @@
             </div>
         </div>
     </div>
+
 </header>
+{% if mensaje %}
+<div class = "mensaje">
+    {{mensaje}}
+</div>
+{% endif %}
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
