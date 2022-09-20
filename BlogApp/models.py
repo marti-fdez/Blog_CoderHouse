@@ -10,7 +10,7 @@ class Profesion(models.Model):
 class Blogger(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    profesion = models.ForeignKey('Profesion', on_delete = models.CASCADE)
+    profesion = models.ForeignKey('Profesion', on_delete = models.SET_NULL, null=True)
     telefono = models.CharField(max_length=9)
     email = models.EmailField()
 
