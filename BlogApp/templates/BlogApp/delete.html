@@ -1,0 +1,45 @@
+{% extends "BlogApp/base.html" %}
+
+{% load static %}
+
+{% block contenido_no_heredado %}   
+<title>Eliminar Datos</title>
+
+<br><br>
+
+<header class="header">
+    <div class="title">Eliminación de Datos</div>
+</header>
+{% if mensaje %}
+    <div class = "mensaje">
+        {{mensaje}}
+    </div>
+{% endif %}
+
+<div class = "crud">
+    <a class = "flex" href="#eliminar-profesion">Eliminar Profesión</a>
+    <a class = "flex" href="#eliminar-blogger">Eliminar Blogger</a>
+    <a class = "flex" href="#eliminar-articulo">Eliminar Artículo</a>
+</div>
+
+<div class= "eliminar-profesion" id = "eliminar-profesion">
+    
+    <table class="tabla-eliminar">
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+                <th>SALARIO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesion in profesiones%}
+            <tr>
+                <td> {{profesion.nombre}} </td>
+                <td> {{profesion.sueldo}} $ </td>
+                <td class="eliminar"><a style="color:red; text-align: center; width: 100%;" href="{% url 'action-eliminar-profesion' profesion.id %}">Eliminar</a></td>
+            </tr>   
+            {% endfor %}
+        </tbody>
+        </table>
+</div>
+{% endblock contenido_no_heredado %}   

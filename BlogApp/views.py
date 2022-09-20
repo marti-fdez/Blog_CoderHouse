@@ -20,6 +20,7 @@ def articulos(request):
 def administracion(request):
     return render(request, "BlogApp/administracion.html")
 
+#CREATE
 @login_required
 def crear_datos(request):
     formulario_profesion = CrearProfesion()
@@ -84,6 +85,8 @@ def crear_articulo(request):
         mensaje = "¡Ha ocurrido un error creando el Artículo!"
         return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
 
+
+#BUSQUEDA
 def buscar_articulos(request):
     formulario_buscar = BuscarArticulo()
     return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar, "articulo_buscado": False})
@@ -100,3 +103,19 @@ def action_buscar_articulo(request):
         else:    
             formulario_buscar = BuscarArticulo()
             return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar,"articulo_buscado": True, "articulo_encontrado": False,"data":data['tematica']})
+
+#UPDATE
+
+#DELETE
+def eliminar_datos(request):
+    get_profesiones = Profesion.objects.all()
+    get_bloggers = Blogger.objects.all()
+    get_articulos = Articulo.objects.all()
+    return render(request, "BlogApp/delete.html", {"profesiones":get_profesiones, "bloggers": get_bloggers, "articulos":get_articulos})
+
+
+def action_eliminar_profesion(request,id):
+    profesion = Profesion.objects.get(id=id)
+    mensaje = f"¡Se ha eliminado la profesión {profesion.nombre}!"
+    profesion.delete()
+    return render(request, "BlogApp/administracion.html",{"mensaje":mensaje})

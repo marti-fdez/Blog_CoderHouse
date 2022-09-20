@@ -11246,3 +11246,242 @@ header.masthead .site-heading .h1 {
     font-size: 2.25rem;
   }
 }
+
+/* 
+
+/////////////////////////////////////////////////////////////////////////////////
+
+CSS AÑADIDO POR EL GRUPO.
+
+*/ 
+
+/* ARTICULOS.HTML*/
+
+
+/* CREAR_DATOS.HTML */
+div.mensaje{
+  width: 100%;
+  padding: 0.5%;
+  margin-bottom: 2%;
+  text-align: center;
+  color: white;
+  background-color: grey;
+  font-weight: bold;        
+  font-size: 90%;
+}
+
+div.form_title{
+  padding-top: 3%;
+  font-weight: bold;
+  text-decoration: underline;
+  font-family: "Open Sans";
+  padding-left: 6%;
+}
+div.title{
+  padding: 2%;
+  font-size: 180%;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family:"Open Sans";
+}
+div.bloque_forms{
+  display: flex;
+  width: 100%;
+}
+div.form_bloque{
+  flex: 25%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+form.form_estilo{
+  width: 100%;
+  background-color: rgb(70, 77, 83);
+  color: white;
+  font-size: 90%;
+  border: solid 3px black;
+  border-bottom: none;
+
+}
+div.atributos{
+  padding-left: 6%;
+  padding-right: 2%;
+  width: 100%;
+}
+
+input.submit{
+  width: 100%;
+  padding: 0%;
+  border: none;
+  border-bottom: solid 3px black;
+  font-family:"Open Sans";
+  padding: 1%;
+  
+}
+input.submit:hover{
+  background-color: black;
+  color: white;
+}
+
+/* BUSCAR-ARTICULOS.HTML */
+
+div.bloque-busqueda{
+  width: 100%;
+  padding-left: 20%;
+  padding-right: 20%; 
+}
+
+input.submit-busqueda{
+  width: 100%;
+  font-family:"Open Sans";
+  padding: 1%;
+  font-weight: bold;
+  border-bottom: solid 3px black; 
+}
+
+/* ADMINISTRACIÓN.HTML */
+header.header{
+  display: block;
+  padding: 3%;
+  padding-bottom: 0;
+  width:100%;
+}
+div.crud{
+  display: flex;
+  width: 100%;
+  padding-bottom: 2%;
+  padding-top: 1%;
+}
+
+a.flex{
+  margin-left: 5%;
+  margin-right: 5%;
+  color:white;
+  flex: 20%;
+  padding: 1%;
+  text-align: center;
+  font-weight: bold;
+  border: solid 2px black;
+  border-radius: 5px;
+  background-color: grey;
+  font-family: "Open Sans";
+}
+a.flex:hover{
+  color:black;
+  border-color: white;
+  
+}
+
+/* DELETE.HTML */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+div.eliminar-profesion{
+  display: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.42em;
+  color:#A7A1AE;
+  background-color:#1F2739;
+}
+
+#eliminar-profesion:target{
+	display: block;
+}
+
+.tabla-eliminar td {
+  font-weight: normal;
+  font-size: 1em;
+-webkit-box-shadow: 0 2px 2px -2px #0E1119;
+   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.tabla-eliminar {
+  text-align: left;
+  overflow: hidden;
+  width: 80%;
+  margin: 0 auto;
+display: table;
+padding: 0 0 8em 0;
+}
+
+.tabla-eliminar td, .tabla-eliminar th {
+  padding-bottom: 2%;
+  padding-top: 2%;
+padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.tabla-eliminar tr:nth-child(odd) {
+  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.tabla-eliminar tr:nth-child(even) {
+  background-color: #2C3446;
+}
+
+.tabla-eliminar th {
+  background-color: #1F2739;
+}
+
+.tabla-eliminar tr:hover {
+ background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+
+
+@media (max-width: 800px) {
+.tabla-eliminar td:nth-child(4),
+.tabla-eliminar th:nth-child(4) { display: none; }
+}
+
+/*------------------------//FORMULARIO//---------------------*/
+
+/*----FORMULARIO Estructura */
+div.bloque_profesion{
+	display: none;
+	background-color: black;
+	color: white;
+  width: 100%;
+  padding-top: 8px;
+}
+table.tabla_profesion{
+  display: block;
+  background-color: black;
+  padding-top: 3%;
+  width: 100%;
+  padding-left: 13.5%;
+  padding-right: 10%;
+}
+
+th.campos_profesion{
+  text-align: center;
+  border: 2px solid white;
+  padding-left: 10%;
+  padding-right: 12%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+td.campos_profesion{
+  text-align: center;
+  font-size: medium;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+td.boton_eliminar{
+  text-align: center;
+  font-size: medium;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 6%;
+  padding-right: 10%;
+  text-align: left; 
+  border: 2px solid white;
+}
+a.eliminar{
+  width: 100%;
+  color:white
+}
