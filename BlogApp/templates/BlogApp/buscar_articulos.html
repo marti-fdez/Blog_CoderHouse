@@ -80,13 +80,13 @@
             {% if articulo_buscado and articulo_encontrado %}
                 <p><b>RESULTADO:</b></p>
                 {% for articulo in articulo_buscado %}
+                <a href="{% url "detalle-articulo" articulo.id %}">
                     <li style = "padding-bottom: 1.5%;">
-                        <b>Nombre</b>: {{articulo.nombre}} 
+                        <b>Titulo</b>: {{articulo.titulo}} 
                         | <b>Fecha</b>: {{articulo.fecha_publicacion}} 
-                        | <b>Temática</b>: {{articulo.tematica}} 
-                        | <b>Cantidad de páginas</b>: {{articulo.cantidad_paginas}} <br>
-                        --> <b>Autor</b>: {{articulo.autor.nombre}} {{articulo.autor.apellido}} 
-                    </li>
+                        | <b>Temática</b>: {{articulo.tematica}} <br>
+                        --> <b>Autor</b>: {{articulo.autor}}
+                    </li></a>
                 {% endfor %}
             {% elif articulo_buscado and not encontrado %}
                 <p>No se ha encontrado ningún artículo con la temática "<b>{{data}}</b>" .</p>    

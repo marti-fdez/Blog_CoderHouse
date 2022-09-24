@@ -40,7 +40,7 @@ def login_request(request):
                 login(request, user)
                 if next_url:
                     return redirect(next_url)
-                return render(request, 'BlogApp/index.html', {"mensaje": "Usuario logueado con éxito"})
+                return redirect(reverse('inicio'))
             else:
                 return render(request, 'login.html', {"form": AuthenticationForm(), "mensaje": "Datos incorrectos"})
         else:

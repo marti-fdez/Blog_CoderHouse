@@ -84,8 +84,13 @@
     <div class="form_bloque">
         <form class="form_estilo" method="POST" enctype="multipart/form-data">
             <div class="form_title">Avatar</div>
+            <br>
             <div class="atributos">
-                <p>Avatar de {{user.username}}</p>
+                {% if user.avatar.imagen.url %}
+                <img src="{{user.avatar.imagen.url}}" width="120px" class="rounded">
+                {% else %}
+                <img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="120px class="rounded"">
+                {% endif %}
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>

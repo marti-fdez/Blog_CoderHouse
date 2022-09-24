@@ -72,44 +72,18 @@
 
 </style>
 
-<div class="title">Creación de Datos</div>
+<div class="title">Creación/Modificación de Artículos</div>
 
-    {% if mensaje %}
-        <div class = "mensaje">
-            {{mensaje}}
-        </div>
-    {% endif %}
 <div class="bloque_forms">
-    <div class="form_bloque">
-        <form class="form_estilo" action="{% url "crear-profesion" %}" method="POST">
-            <div class="form_title">PROFESIÓN</div>
-            <div class="atributos">
-                {% csrf_token %}
-                {{ formulario_profesion.as_p }}
-            </div>
-            <input class="submit" type="submit" value="Crear Profesión">
-        </form>
-    </div>
 
     <div class="form_bloque">
-        <form class="form_estilo" action="{% url "crear-blogger" %}" method="POST">
-            <div class="form_title">BLOGGER</div>
+        <form class="form_estilo" method="POST" enctype="multipart/form-data">
+            <div class="form_title">ARTÍCULO | {{object.titulo}} </div>
             <div class="atributos">
                 {% csrf_token %}
-                {{ formulario_blogger.as_p }}
+                {{ form.as_p }}
             </div>
-            <input class="submit" type="submit"  value="Crear Blogger">
-        </form>
-    </div>
-
-    <div class="form_bloque">
-        <form class="form_estilo" action="{% url "crear-articulo" %}" method="POST">
-            <div class="form_title">ARTÍCULO</div>
-            <div class="atributos">
-                {% csrf_token %}
-                {{ formulario_articulo.as_p }}
-            </div>
-            <input class="submit" type="submit" value="Crear Artículo">
+            <input class="submit" type="submit" value="Proceder">
         </form>
     </div>
 </div>

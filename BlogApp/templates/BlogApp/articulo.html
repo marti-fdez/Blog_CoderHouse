@@ -1,0 +1,44 @@
+{% extends "BlogApp/base.html" %}
+
+
+{% load static %}
+
+{% block contenido_no_heredado %}
+<title>Artículos</title>
+
+<style>
+div.bloque_general{
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+h1.title{
+    margin-top: 10%;
+    margin-bottom: 3%;
+}
+div.texto{
+    font-size: 90%;
+    text-align: justify;
+}
+</style>
+
+<div class="bloque_general">
+    <h1 class="title">{{object.titulo}}</h1>
+    <h3 class="mb-5">{{object.subtitulo}}</h3>
+    <img src="{{object.imagen.url}}" alt="imagen{{object.id}}" width="100%"></img> 
+    <div class="texto">
+    {{object.cuerpo}}
+    <br><br>
+    </div>
+    <i>Redactado por <strong>{{object.autor}}</strong> el {{object.fecha_publicacion}}</i><br>
+    <i>En {{object.tematica}}</i>
+    <br><br>
+    <button class='btn btn-secondary'><a href="{% url 'listar-articulos' %}" class='text-white'>Regresar al listado</a></button>
+    {% if user.is_authenticated %}
+    <button class='btn btn-primary'><a href="{% url "editar-articulo" articulo.id %}" class='text-white'>Editar entrada</a></button>
+    <button class='btn btn-danger'><a href="{% url "eliminar-articulo" articulo.id %}" class='text-white'>Eliminar entrada</a></button>
+    {% endif %}
+    <br><br>
+</div>
+   
+{% endblock contenido_no_heredado %}

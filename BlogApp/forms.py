@@ -1,24 +1,13 @@
 
 from django import forms
 
-class CrearProfesion(forms.Form):
-    nombre = forms.CharField(max_length=100)
-    sueldo = forms.IntegerField()
-
-
-class CrearBlogger(forms.Form):
-    nombre = forms.CharField(max_length=100)
-    apellido = forms.CharField(max_length=100)
-    profesion = forms.CharField(max_length=100)
-    telefono = forms.IntegerField()
-    email = forms.EmailField()
-
 class CrearArticulo(forms.Form):
-    autor = forms.CharField(max_length=100)
-    nombre = forms.CharField(max_length=250)
-    tematica = forms.CharField(max_length=100)
+    titulo = forms.CharField(max_length=250)
+    subtitulo = forms.CharField(max_length=250)
+    cuerpo = forms.CharField(max_length=700)
     fecha_publicacion = forms.DateField(widget=forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'required': 'required'}))
-    cantidad_paginas = forms.IntegerField()
+    imagen = forms.ImageField()
+    tematica = forms.CharField(max_length=100)
 
 class BuscarArticulo(forms.Form):
-    tematica=forms.CharField(max_length=100)
+    busqueda=forms.CharField(max_length=100)
