@@ -25,7 +25,10 @@ div.texto{
 <div class="bloque_general">
     <h1 class="title">{{object.titulo}}</h1>
     <h3 class="mb-5">{{object.subtitulo}}</h3>
-    <img src="{{object.imagen.url}}" alt="imagen{{object.id}}" width="100%"></img> 
+    {% if articulo.imagen %}
+        <img src="{{object.imagen.url}}" alt="imagen{{object.id}}" width="100%"></img>       
+    {% endif %}
+
     <div class="texto">
     {{object.cuerpo}}
     <br><br>

@@ -56,7 +56,9 @@
                 <h6>Última entrada</h6><hr />
                 <h3>{{ultimo_articulo.titulo}}</h3><br>
                     <h4>{{ultimo_articulo.subtitulo}}</h4><br>
-                    <img class="articulo__img" src={{ultimo_articulo.imagen.url}}></img><br>
+                    {% if ultimo_articulo.imagen %}
+                        <img class="articulo__img" src={{ultimo_articulo.imagen.url}}></img><br>
+                    {% endif %}
                     <p>{{ultimo_articulo.cuerpo|truncatechars:150}}</p>
             </div>
 
