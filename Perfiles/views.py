@@ -22,7 +22,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('inicio'))
+            return render(request, 'BlogApp/index.html', {"mensaje": "Usuario creado con éxito"})
         else:
             mensaje = "Error en los datos ingresados"
     form = UserRegisterForm()

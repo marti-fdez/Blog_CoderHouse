@@ -106,7 +106,9 @@ a.flex:hover{
         <hr />
         <li><a href="{% url "detalle-articulo" articulo.id %}"><h2>{{articulo.titulo}}</h2><br>
             <h4>{{articulo.subtitulo}}</h4><br>
+            {% if articulo.imagen %}
             <img class="articulo__img" src={{articulo.imagen.url}}></img><br>
+            {% endif %}
             <p>{{articulo.cuerpo|truncatechars:150}}<strong><i> Leer más</i></strong></p></a><br>
             {% if user.is_authenticated %}
             <button class='btn btn-primary'><a href="{% url "editar-articulo" articulo.id %}" class='text-white'>Editar entrada</a></button>
