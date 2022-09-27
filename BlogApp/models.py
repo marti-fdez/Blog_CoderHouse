@@ -1,22 +1,11 @@
 
 from django.db import models
-
-# Create your models here.
-class Profesion(models.Model):
-    nombre = models.CharField(max_length=100)
-    sueldo = models.IntegerField()
-
-class Blogger(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-    profesion = models.ForeignKey('Profesion', on_delete = models.CASCADE)
-    telefono = models.CharField(max_length=9)
-    email = models.EmailField()
-
-
+from django.contrib.auth.models import User
 class Articulo(models.Model):
-    autor = models.ForeignKey('Blogger', on_delete = models.CASCADE)
-    nombre = models.CharField(max_length=250)
+    titulo = models.CharField(max_length=250)
+    subtitulo = models.CharField(max_length=250)
+    cuerpo = models.CharField(max_length=700)
     fecha_publicacion = models.DateField()
+    imagen = models.ImageField(upload_to="articulos", null=True, blank=True)
+    autor = models.ForeignKey(User, on_delete = models.CASCADE)
     tematica = models.CharField(max_length=250)
-    cantidad_paginas = models.IntegerField()

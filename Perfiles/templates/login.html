@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block contenido_no_heredado %}   
-<title>Crear Objetos</title>
+<title>Registro de Usuario</title>
 <div style="margin-top: 5%;" ></div>
 <style>
      div.mensaje{
@@ -72,20 +72,26 @@
 
 </style>
 
-<div class="title">Creación/Modificación de Artículos</div>
+<div class="title">Ingreso al sistema</div>
 
+    {% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+    {% endif %}
 <div class="bloque_forms">
-
+ 
     <div class="form_bloque">
-        <form class="form_estilo" method="POST" enctype="multipart/form-data">
-            <div class="form_title">ARTÍCULO | {{object.titulo}} </div>
+        <form class="form_estilo" method="POST">
+            <div class="form_title">Ingrese sus credenciales</div>
             <div class="atributos">
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>
-            <input class="submit" type="submit" value="Proceder">
+            <input class="submit" type="submit"  value="Ingresar">
         </form>
     </div>
+
 </div>
 
 

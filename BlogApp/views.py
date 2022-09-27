@@ -2,94 +2,79 @@
 from django.shortcuts import render
 from django.urls import reverse
 
-from BlogApp.forms import BuscarArticulo, CrearArticulo, CrearBlogger, CrearProfesion
-from BlogApp.models import Articulo, Profesion, Blogger
+from BlogApp.forms import BuscarArticulo, CrearArticulo
+from BlogApp.models import Articulo
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+
+from django.urls import reverse, reverse_lazy
 
 # Create your views here.
 
 def inicio(request):
-    return render(request, "BlogApp/index.html")
+    ultimo_articulo = Articulo.objects.latest('id')
+    return render(request, "BlogApp/index.html", {'ultimo_articulo':ultimo_articulo})
 
 def articulos(request):
     return render(request, "BlogApp/articulos.html")
 
-def administracion(request):
-    return render(request, "BlogApp/administracion.html")
-
-def crear_datos(request):
-    formulario_profesion = CrearProfesion()
-    formulario_blogger = CrearBlogger()
-    formulario_articulo = CrearArticulo()
-    return render(request, "BlogApp/crear_datos.html", {'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
-
-def crear_profesion(request):
-    formulario = CrearProfesion(request.POST)
-    if formulario.is_valid():
-        data = formulario.cleaned_data
-        profesion = Profesion(nombre=data['nombre'],sueldo=data['sueldo'])
-        profesion.save()
-        mensaje = "¡Profesión creada con éxito!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-    else:   
-        mensaje = "¡Ha ocurrido un error creando la Profesión!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+def about(request):
+    return render(request, "BlogApp/about.html")
         
-    
-def crear_blogger(request):
-    formulario = CrearBlogger(request.POST)
-    if formulario.is_valid():
-        data = formulario.cleaned_data
-        try:
-            profesion_elegida = Profesion.objects.get(nombre=data['profesion'])
-        except Profesion.DoesNotExist: 
-            mensaje = "¡NO existe esa Profesión!"
-            formulario_profesion = CrearProfesion()
-            formulario_blogger = CrearBlogger()
-            formulario_articulo = CrearArticulo()
-            return render(request, 'BlogApp/crear_datos.html', {'mensaje': mensaje, 'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
-        else:
-            blogger = Blogger(nombre=data['nombre'],apellido=data['apellido'], profesion=profesion_elegida, telefono=data['telefono'], email=data['email'])
-            blogger.save()
-            mensaje = "¡Blogger creado con éxito!"
-            return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-    else:   
-        mensaje = "¡Ha ocurrido un error creando el Blogger!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-        
+@login_required
 def crear_articulo(request):
-    formulario = CrearArticulo(request.POST)
-    if formulario.is_valid():
-        data = formulario.cleaned_data
-        try:
-            autor_elegido = Blogger.objects.get(nombre=data['autor'])
-        except Blogger.DoesNotExist:
-            mensaje = "¡NO existe ese Autor!"
-            formulario_profesion = CrearProfesion()
-            formulario_blogger = CrearBlogger()
-            formulario_articulo = CrearArticulo()
-            return render(request, 'BlogApp/crear_datos.html', {'mensaje': mensaje, 'formulario_profesion': formulario_profesion, 'formulario_blogger': formulario_blogger, 'formulario_articulo': formulario_articulo})
-        else:    
-            articulo = Articulo(autor=autor_elegido,nombre = data["nombre"],fecha_publicacion=data['fecha_publicacion'], tematica=data['tematica'], cantidad_paginas=data['cantidad_paginas'])
+    if request.method == 'POST':
+        formulario = CrearArticulo(request.POST, request.FILES)
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            autor_elegido = request.user
+            articulo = Articulo(autor=autor_elegido,titulo = data["titulo"],subtitulo=data["subtitulo"],cuerpo=data["cuerpo"],fecha_publicacion=data['fecha_publicacion'], imagen=data["imagen"], tematica=data['tematica'])
             articulo.save()
             mensaje = "¡Artículo creado con éxito!"
-            return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
-    else:   
-        mensaje = "¡Ha ocurrido un error creando el Artículo!"
-        return render(request, 'BlogApp/administracion.html', {'mensaje': mensaje})
+            return render(request, 'BlogApp/success.html', {'mensaje': mensaje})
+        else:   
+            mensaje = "¡Ha ocurrido un error creando el Artículo!"
+            return render(request, 'BlogApp/articulos.html', {'mensaje': mensaje})
+    form = CrearArticulo()
+    return render(request, "BlogApp/crear_datos.html", {'form': form})
 
 def buscar_articulos(request):
     formulario_buscar = BuscarArticulo()
     return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar, "articulo_buscado": False})
+
+from django.db.models import Q
 
 def action_buscar_articulo(request):
     articulo_buscado = {}  
     formulario = BuscarArticulo(request.GET)
     if formulario.is_valid():
         data = formulario.cleaned_data
-        articulo_buscado = Articulo.objects.filter(tematica__icontains=data['tematica'])
+        articulo_buscado = Articulo.objects.filter(Q(titulo__icontains=data['busqueda']) | Q(subtitulo__icontains=data['busqueda']) | Q(cuerpo__icontains=data['busqueda'])).distinct().order_by("autor") 
         if articulo_buscado.exists():
             formulario_buscar = BuscarArticulo()
             return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar, "articulo_buscado": articulo_buscado, "articulo_encontrado": True})
         else:    
             formulario_buscar = BuscarArticulo()
-            return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar,"articulo_buscado": True, "articulo_encontrado": False,"data":data['tematica']})
+            return render(request, 'BlogApp/buscar_articulos.html', {'formulario_buscar': formulario_buscar,"articulo_buscado": True, "articulo_encontrado": False,"data":data['busqueda']})
+
+class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
+    model = Articulo
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'fecha_publicacion', 'imagen', 'tematica']
+    success_url = reverse_lazy('listar-articulos')
+    template_name= "BlogApp/crear_datos.html"
+
+class ArticuloListView(ListView):
+    model = Articulo
+    template_name = "BlogApp/articulos.html"
+
+class ArticuloDetailView(DetailView):
+    model = Articulo
+    template_name = "BlogApp/articulo.html"
+
+class ArticuloDeleteView(DeleteView):
+    model = Articulo
+    template_name= "BlogApp/eliminar.html"
+    success_url= reverse_lazy('listar-articulos')
