@@ -86,7 +86,7 @@
             <div class="form_title">Avatar</div>
             <br>
             <div class="atributos">
-                {% if user.avatar.imagen.url %}
+                {% if user.avatar.imagen.url and user.avatar.imagen.url != "" %}
                 <img src="{{user.avatar.imagen.url}}" width="120px" class="rounded">
                 {% else %}
                 <img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="120px class="rounded"">

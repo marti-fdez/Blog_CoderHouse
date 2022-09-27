@@ -25,6 +25,7 @@
                 background-color: grey;
                 font-weight: bold;        
                 font-size: 90%;
+            }
         </style>   
 
     </head>
@@ -45,7 +46,7 @@
                         {% if user.is_authenticated %}
                         <a class="btn btn-danger rounded m-2 p-2" href={% url 'logout' %}>LOGOUT</a>
                         <a class="btn btn-primary rounded m-2 p-2" href={% url 'update-user' %}>Editar Perfil</a>
-                        {% if user.avatar.imagen.url %}
+                        {% if user.avatar.imagen.url and user.avatar.imagen.url != "" %}
                             <a href="{% url 'update-avatar' user.avatar.id %}"><img src="{{user.avatar.imagen.url}}" width="50px" class="rounded-circle"></a>
                         {% else %}
                             <a href="{% url 'crear-avatar' %}"><img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="50px" class="rounded-circle"></a>

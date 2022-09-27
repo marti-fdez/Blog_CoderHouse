@@ -86,7 +86,7 @@
             <div class="form_title">Modifique su perfil</div>
             <div class="atributos">
                 <p>Datos de {{ object.username }}</p>
-                {% if user.avatar.imagen.url %}
+                {% if user.avatar.imagen.url and user.avatar.imagen.url != "" %}
                 <a href="{% url 'update-avatar' user.avatar.id %}"><img src="{{user.avatar.imagen.url}}" width="120px" class="rounded"></a>
                 {% else %}
                     <a href="{% url 'crear-avatar' %}"><img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="120px class="rounded""></a>
