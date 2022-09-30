@@ -59,7 +59,7 @@
                     {% if ultimo_articulo.imagen %}
                         <img class="articulo__img" src={{ultimo_articulo.imagen.url}}></img><br>
                     {% endif %}
-                    <p>{{ultimo_articulo.cuerpo|truncatechars:150}}</p>
+                    <p>{{ultimo_articulo.cuerpo|safe|truncatechars:150}}</p>
             </div>
 
             

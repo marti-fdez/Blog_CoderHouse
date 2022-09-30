@@ -1,0 +1,172 @@
+/* MENSAJE */
+div.mensaje{
+    width: 100%;
+    padding: 0.5%;
+    margin-bottom: 2%;
+    text-align: center;
+    color: white;
+    background-color: grey;
+    font-weight: bold;        
+    font-size: 90%;
+}
+/* FORMS */
+div.form_title{
+    padding-top: 3%;
+    font-weight: bold;
+    font-family: "Open Sans";
+    padding-left: 6%;
+}
+
+div.title{
+    padding: 2%;
+    font-size: 180%;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family:"Open Sans";
+}
+
+div.bloque_forms{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%; 
+}
+div.form_bloque{
+    flex: 100%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+form.form_estilo{
+    width: 100%;
+    background-color: rgb(70, 77, 83);
+    color: white;
+    font-size: 90%;
+    border: solid 1px rgb(175, 175, 175);
+    border-radius: 10px;
+    border-bottom: none;
+    font-family:"Open Sans";
+ 
+}
+form.form_estilo input{
+    width: 100%;
+    border-radius: 5px;
+}
+
+div.atributos{
+    padding-left: 6%;
+    padding-right: 6%;
+    width: 100%;
+}
+
+input.submit{
+    width: 100%;
+    padding: 0%;
+    border: none;
+    border-bottom: solid 1px rgb(175, 175, 175);
+    border-radius: 5px;
+    font-family:"Open Sans";
+    padding: 1%;
+    
+}
+input.submit:hover{
+    background-color: black;
+    color: white;
+}
+
+/* LISTA ARTICULOS */
+div.bloque_general{
+    margin-top: 10%;
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+h1.title{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+div.texto{
+    font-size: 90%;
+    text-align: justify;
+}
+div.mensaje{
+    width: 100%;
+    padding: 0.5%;
+    margin-bottom: 2%;
+    text-align: center;
+    color: white;
+    background-color: grey;
+    font-weight: bold;        
+    font-size: 90%;
+}
+header{
+    display: block;
+    padding-bottom: 0;
+    width:100%;
+}
+div.title{
+    font-size: 180%;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family:"Open Sans";
+}
+div.crud{
+    display: flex;
+    width: 100%;
+    padding-bottom: 2%;
+    padding-top: 1%;
+}
+
+a.flex{
+    margin-left: 5%;
+    margin-right: 5%;
+    color:white;
+    flex: 20%;
+    padding: 1%;
+    text-align: center;
+    font-weight: bold;
+    border: solid 2px ;
+    border-radius: 5px;
+    background-color: grey;
+    font-family: "Open Sans";
+}
+a.flex:hover{
+    color:black;
+    border-color: white;
+    
+}
+.articulo__img{
+    width: 90%;
+    height: 7rem;
+    object-fit: cover;
+    object-position: top;
+    -webkit-mask:linear-gradient(white,transparent);
+    mask:linear-gradient(white,transparent);
+
+}
+.lista {
+    list-style: none;
+}
+.lista li {
+    background-color: rgb(231, 231, 231);
+    padding: 30px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* ARTICULO */
+div.bloque_general{
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+h1.title{
+    margin-top: 10%;
+    margin-bottom: 3%;
+}
+div.texto{
+    font-size: 90%;
+    text-align: justify;
+}

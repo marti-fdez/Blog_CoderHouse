@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BlogApp',
     'Perfiles',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/' ## PARA DESIGNAR DONDE SE AÑADEN LOS ARCHIVOS QUE CARGAN LOS USUARIOS 
 
 LOGIN_URL = 'login' ##PARA QUE FUNCIONEN LO MIXIN Y DECORADORES EN LA REDIRECCION
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'width': '100%',
+    },
+}
