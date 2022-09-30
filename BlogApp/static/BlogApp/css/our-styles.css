@@ -30,8 +30,8 @@ div.bloque_forms{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-left: 20%;
-    padding-right: 20%; 
+    padding-left: 10%;
+    padding-right: 10%; 
 }
 div.form_bloque{
     flex: 100%;
@@ -175,5 +175,11 @@ div.texto{
     div.bloque_general{
         padding-top: 3%;
     }
-    
+    div.title{
+        padding-top: 15%;
+    }
+    div.bloque_forms{
+        padding-left: 5%;
+        padding-right: 5%; 
+    }
 }
