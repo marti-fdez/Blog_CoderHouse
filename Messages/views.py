@@ -23,7 +23,7 @@ class ChatList(LoginRequiredMixin, ListView):
     model = Chat 
     template_name= "chats.html"
 
-@login_required
+@login_required  # type: ignore
 def detalle_chat(request, pk):
     chat_identifier = Chat.objects.get(id=pk)
     if request.method == 'POST':
@@ -42,7 +42,7 @@ class EliminarChat(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('chats')
     template_name= "eliminar.html"
 
-@login_required
+@login_required  # type: ignore
 def new_message_view(request, pk):
     chat_identifier = Chat.objects.get(id=pk)
 
