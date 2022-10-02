@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'BlogApp',
     'Perfiles',
     'ckeditor',
+    'Messages',
 ]
 
 MIDDLEWARE = [

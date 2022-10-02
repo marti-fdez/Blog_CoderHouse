@@ -1,0 +1,48 @@
+{% extends "BlogApp/base.html" %}
+
+{% load static %}
+
+{% block contenido_no_heredado %}   
+<title>Chat</title>
+<div style="margin: 5%" >
+
+<div class="title">Mensajería</div>
+
+    {% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+    {% endif %}
+
+    <li class="btn btn-success"><a href="{% url 'chats' %}">Regresar</a></li>
+    
+    <ul class="lista">
+        {% if object.message_set.all|length > 0%}
+        {% for message in object.message_set.all %}
+        <li>
+            <p>{{message.text}}</p><br>
+            <i>{{message.created}}</i><br>
+            <i>{{message.author}}</i><br>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p>No hay mensajes...</p>
+        {% endif %}
+
+    </ul>
+    <div class="form_bloque">
+        <form class="form_estilo" method="POST">
+            <div class="form_title">Nuevo Mensaje</div>
+            <div class="atributos">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <input class="submit" type="submit"  value="Enviar">
+        </form>
+    </div>
+
+</div>
+    
+<br><br>
+
+{% endblock contenido_no_heredado %}   

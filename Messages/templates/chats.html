@@ -1,0 +1,49 @@
+{% extends "BlogApp/base.html" %}
+
+{% load static %}
+
+{% block contenido_no_heredado %}   
+<title>Chat</title>
+<div style="margin: 5%" >
+
+<div class="title">Mensajería</div>
+
+    {% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+    {% endif %}
+    <p>Comience a chatear... </p>
+    <ul class="lista">{% if object_list|length > 0 %}
+        {% for chat in object_list %}
+            {% if user.username == chat.user1.username or user.username == chat.user2.username %}
+                <hr />
+                <li><a href="{% url "detalle-chat" chat.id %}">
+                    <h4>Chat con  {% if user.username == chat.user1.username %}{{chat.user2.username}}{% else %}{{chat.user1.username}} {% endif %}</h4><br>
+                    
+                    <img width="66px" src=
+                    {% if user.username == chat.user1.username %}
+                        {% if chat.user2.avatar.imagen %}"{{chat.user2.avatar.imagen.url}}"
+                        {% else%}"{% static 'BlogApp/assets/img/noprofile.jpg' %}"
+                        {% endif %}
+                    {% else%}
+                        {% if chat.user1.avatar.imagen %}"{{chat.user1.avatar.imagen.url}}"
+                        {% else%}"{% static 'BlogApp/assets/img/noprofile.jpg' %}"
+                        {% endif %}
+                    {% endif %}
+                    ><br></a><br>
+                    <button class='btn btn-danger'><a href="{% url "eliminar-chat" chat.id %}" class='text-white'>Eliminar chat</a></button>
+                    <br>
+                    <br>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+        <a class = "btn btn-success rounded" href="{% url 'newchat' %}">Nuevo chat</a>
+    </ul>
+
+</div>
+    
+<br><br>
+
+{% endblock contenido_no_heredado %}   
