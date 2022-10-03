@@ -6,22 +6,6 @@
 {% block contenido_no_heredado %}
 <title>Artículos</title>
 
-<style>
-div.bloque_general{
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-h1.title{
-    margin-top: 10%;
-    margin-bottom: 3%;
-}
-div.texto{
-    font-size: 90%;
-    text-align: justify;
-}
-</style>
-
 <div class="bloque_general">
     <h1 class="title">{{object.titulo}}</h1>
     <h3 class="mb-5">{{object.subtitulo}}</h3>
@@ -30,7 +14,7 @@ div.texto{
     {% endif %}
 
     <div class="texto">
-    {{object.cuerpo}}
+    {{object.cuerpo|safe}}
     <br><br>
     </div>
     <i>Redactado por <strong>{{object.autor}}</strong> el {{object.fecha_publicacion}}</i><br>

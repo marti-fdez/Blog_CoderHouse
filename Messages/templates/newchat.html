@@ -3,32 +3,36 @@
 {% load static %}
 
 {% block contenido_no_heredado %}   
-<title>Registro de Usuario</title>
-<div style="margin-top: 5%;" ></div>
+<title>Chat</title>
+<div style="margin: 5%" >
 
-<div class="title">Ingreso al sistema</div>
+
+<div class="title">Mensajería</div>
+
+<li class="btn btn-success"><a href="{% url 'chats' %}">Regresar</a></li>
 
     {% if mensaje %}
         <div class = "mensaje">
             {{mensaje}}
         </div>
     {% endif %}
+    
 <div class="bloque_forms">
  
     <div class="form_bloque">
         <form class="form_estilo" method="POST">
-            <div class="form_title">Ingrese sus credenciales</div>
+            <div class="form_title">Nuevo Chat</div>
             <div class="atributos">
                 {% csrf_token %}
                 {{ form.as_p }}
             </div>
-            <input class="submit" type="submit"  value="Ingresar">
+            <input class="submit" type="submit"  value="Comenzar">
         </form>
     </div>
 
 </div>
 
-
+</div>
     
 <br><br>
 

@@ -1,0 +1,32 @@
+{% extends "BlogApp/base.html" %}
+
+{% load static %}
+
+{% block contenido_no_heredado %}   
+<br>
+<br>
+<br>
+<div class="card m-3 p-3">Eliminando {{object.titulo}}</div>
+
+    {% if mensaje %}
+        <div class = "mensaje">
+            {{mensaje}}
+        </div>
+    {% endif %}
+<div class="bloque_forms">
+
+    <div class="form_bloque">
+        <form class="m-3 p-3 card"  method="POST" enctype="multipart/form-data">
+            <p>¿Estás seguro de eliminar el chat con {% if user.username == object.user1.username %}{{object.user2.username}}{% else %}{{object.user1.username}} {% endif %}?</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Confirmar">
+        </form>
+    </div>
+</div>
+
+
+    
+<br><br>
+
+{% endblock contenido_no_heredado %}   

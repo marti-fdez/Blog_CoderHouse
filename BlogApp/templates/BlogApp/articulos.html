@@ -5,88 +5,6 @@
 
 {% block contenido_no_heredado %}
 <title>Artículos</title>
-
-<style>
-div.bloque_general{
-    margin-top: 10%;
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-h1.title{
-    margin-top: 3%;
-    margin-bottom: 3%;
-}
-div.texto{
-    font-size: 90%;
-    text-align: justify;
-}
-div.mensaje{
-    width: 100%;
-    padding: 0.5%;
-    margin-bottom: 2%;
-    text-align: center;
-    color: white;
-    background-color: grey;
-    font-weight: bold;        
-    font-size: 90%;
-}
-header{
-    display: block;
-    padding-bottom: 0;
-    width:100%;
-}
-div.title{
-    font-size: 180%;
-    text-align: center;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    font-family:"Open Sans";
-}
-div.crud{
-    display: flex;
-    width: 100%;
-    padding-bottom: 2%;
-    padding-top: 1%;
-}
-
-a.flex{
-    margin-left: 5%;
-    margin-right: 5%;
-    color:white;
-    flex: 20%;
-    padding: 1%;
-    text-align: center;
-    font-weight: bold;
-    border: solid 2px ;
-    border-radius: 5px;
-    background-color: grey;
-    font-family: "Open Sans";
-}
-a.flex:hover{
-    color:black;
-    border-color: white;
-    
-}
-.articulo__img{
-    width: 90%;
-    height: 7rem;
-    object-fit: cover;
-    object-position: top;
-    -webkit-mask:linear-gradient(white,transparent);
-    mask:linear-gradient(white,transparent);
-
-}
-.lista {
-    list-style: none;
-}
-.lista li {
-    background-color: rgb(231, 231, 231);
-    padding: 30px;
-    border-radius: 5px;
-    margin: 10px;
-}
-</style>
                
 
 <div class="bloque_general">
@@ -109,13 +27,14 @@ a.flex:hover{
             {% if articulo.imagen %}
             <img class="articulo__img" src={{articulo.imagen.url}}></img><br>
             {% endif %}
-            <p>{{articulo.cuerpo|truncatechars:150}}<strong><i> Leer más</i></strong></p></a><br>
+            <p>{{articulo.cuerpo|safe|truncatechars:150}}<strong><i> Leer más</i></strong></p></a><br>
             {% if user.is_authenticated %}
             <button class='btn btn-primary'><a href="{% url "editar-articulo" articulo.id %}" class='text-white'>Editar entrada</a></button>
             <button class='btn btn-danger'><a href="{% url "eliminar-articulo" articulo.id %}" class='text-white'>Eliminar entrada</a></button>
             <br>
             <br>
             {% endif %}
+        </li>
         {% endfor %}
         {% else %}
         <p>No hay entradas aún... </p>

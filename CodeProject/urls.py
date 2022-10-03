@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('BlogApp.urls')),
     path('accounts/', include('Perfiles.urls')),
+    path('messages/', include('Messages.urls')),
 ]
 from django.conf import settings
 from django.conf.urls.static import static

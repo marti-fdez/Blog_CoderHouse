@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <link rel="icon" type="image/x-icon" href="{% static 'BlogApp/assets/favicon.ico' %}"/>
+        <link rel="icon" type="image/png"  href="{% static 'BlogApp/assets/favicon.ico' %}"/>
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -15,18 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'BlogApp/css/styles.css'%}" rel="stylesheet" />
-        <style>
-            div.mensaje{
-                width: 100%;
-                padding: 0.5%;
-                margin-bottom: 2%;
-                text-align: center;
-                color: white;
-                background-color: grey;
-                font-weight: bold;        
-                font-size: 90%;
-            }
-        </style>   
+        <link href="{% static 'BlogApp/css/our-styles.css'%}" rel="stylesheet" /> 
 
     </head>
     <body>
@@ -44,14 +33,11 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'listar-articulos' %}">Artículos</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">Nosotros</a></li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'chats' %}">Mensajería</a></li>
                         <a class="btn btn-danger rounded m-2 p-2" href={% url 'logout' %}>LOGOUT</a>
                         <a class="btn btn-primary rounded m-2 p-2" href={% url 'update-user' %}>Editar Perfil</a>
-                        {% if user.avatar.imagen and user.avatar.imagen != "" %}
-                            <a href="{% url 'update-avatar' user.avatar.id %}"><img src="{{user.avatar.imagen.url}}" width="50px" class="rounded-circle"></a>
-                        
-                        {% elif user.avatar.imagen == "" %}
-                            <a href="{% url 'update-avatar' user.avatar.id %}"> <img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="50px" class="rounded-circle"></a>
-
+                        {% if user.avatar.id %}
+                            <a href="{% url 'update-avatar' user.avatar.id %}"><img src={% if user.avatar.imagen %}"{{user.avatar.imagen.url}}"{% else%}"{% static 'BlogApp/assets/img/noprofile.jpg' %}"{% endif %} width="50px" class="rounded-circle"></a>
                         {% else %}
                             <a href="{% url 'crear-avatar' %}"><img src="{% static 'BlogApp/assets/img/noprofile.jpg' %}" width="50px" class="rounded-circle"></a>
                         {% endif %}
