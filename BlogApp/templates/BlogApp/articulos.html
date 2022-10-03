@@ -29,8 +29,8 @@
             {% endif %}
             <p>{{articulo.cuerpo|safe|truncatechars:150}}<strong><i> Leer más</i></strong></p></a><br>
             {% if user.is_authenticated %}
-            <button class='btn btn-primary'><a href="{% url "editar-articulo" articulo.id %}" class='text-white'>Editar entrada</a></button>
-            <button class='btn btn-danger'><a href="{% url "eliminar-articulo" articulo.id %}" class='text-white'>Eliminar entrada</a></button>
+            <a class='btn btn-primary' href="{% url 'editar-articulo' articulo.id %}">Editar entrada</a>
+            <a class='btn btn-danger' href="{% url 'eliminar-articulo' articulo.id %}">Eliminar entrada</a>
             <br>
             <br>
             {% endif %}

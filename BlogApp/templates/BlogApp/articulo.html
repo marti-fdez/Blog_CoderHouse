@@ -20,10 +20,10 @@
     <i>Redactado por <strong>{{object.autor}}</strong> el {{object.fecha_publicacion}}</i><br>
     <i>En {{object.tematica}}</i>
     <br><br>
-    <button class='btn btn-secondary'><a href="{% url 'listar-articulos' %}" class='text-white'>Regresar al listado</a></button>
+    <a class='btn btn-secondary' href="{% url 'listar-articulos' %}">Regresar al listado</a>
     {% if user.is_authenticated %}
-    <button class='btn btn-primary'><a href="{% url "editar-articulo" articulo.id %}" class='text-white'>Editar entrada</a></button>
-    <button class='btn btn-danger'><a href="{% url "eliminar-articulo" articulo.id %}" class='text-white'>Eliminar entrada</a></button>
+    <a class='btn btn-primary' href="{% url 'editar-articulo' articulo.id %}">Editar entrada</a>
+    <a class='btn btn-danger' href="{% url 'eliminar-articulo' articulo.id %}">Eliminar entrada</a>
     {% endif %}
     <br><br>
 </div>
