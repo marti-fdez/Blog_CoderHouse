@@ -1,62 +1,46 @@
 
-Hola Pedro, en este README te explicamos como hacer correctamente las comprobaciones necesarias para esta entrega.
+En este README explicamos el proyecto final BLOG PYTHON.
 
-Empezamos con los Modelos, tenemos 3 modelos:
+El mismo consta de 3 apps:
+BlogApp - La cual consta del modelo Articulo.
+Perfiles - La cual corresponde a todo lo relacionado con la administración de los usuarios.
+Mesages - Contiene los modelos Chat y Message.
 
-Profesión, en este modelo tenemos como atributo el nombre de la profesión y su sueldo x mes, como sabemos la profesion debe de ser realizada por una Persona, 
-en nuestro caso hemos creado el modelo Blogger, blogger representa cada usuario de nuestro blog, desde trabajadores hasta usuarios/clientes y estos bloggeros
-podran tener algún artículo en la web a su nombre, como autores.
+Se realizaron 3 UnitTest que se encuentran en Test.Py de la app BlogApp. Uno verifica la correcta creación de usuarios, otro la creación de Articulos con letras random y el último para comprobar la correcta creación de chat y mensajes.
 
-Un Blog  debe de tener artículos, el autor de los artículos publicados en el blog debe de ser un Blogger registrado en la web.
+Model
+Articulo, en este modelo tenemos como atributos el titulo, subtitulo, cuerpo (RichTextField ya que pertenece al ckEditor), fecha de publicación la cual es seleccionable, imagen, autor y temática.
+El autor de los artículos corresponde al user en session, registrado en la web. 
+En la page articulos/ podemos encontrar todas las entradas publicadas y buscar en las mismas, mediante la view action_buscar_articulo. CUalquier persona tiene acceso a estas view. En el index podemos encontrar el último artículo publicado. 
 
-TODAS ESTAS RELACIONES SE REPRESENTAN CON FOREIGNS KEYS, TAMBIÉN HAY UN "DIAGRAMA.PNG" PARA CONSULTAR EL DISEÑO  DE LA BASE DE DATOS.
+Cualquier user registrado, al iniciar sesión puede crear, editar y eliminar entradas, sin importar si es de su autoría, o no. En la sección editar pefil puede modificar sus datos, su avatar y limpiarlo.
 
-Al tener todos los campos obligatorios, y en dos modelos tenemos FOREIGNS KEYS, debemos seguir un orden de creación de registros en la base de datos.
+TODAS ESTAS RELACIONES SE REPRESENTAN CON FOREIGNS KEYS, salvo en el caso de los avatar que corresponden OneToOne con user.
 
-El orden sería el siguiente:
+Model
+Chat y Messages
+Un chat se inicializa en la sesión Mensajería, seleccionando el user con el que se quiere incializar la conversación. Una vez creado el chat, nos permite enviar mensajes. Tambien el usuario puede eliminar el chat, pero no los mensajes.
 
-- Crear una Profesión.
-- Crear un Blogger --> relacionar con Profesión existente en la base de datos.
-- Crear un Articulo --> relacionar con Blogger existente en la base de datos.
-
-Podemos crear los registros de los modelos nombrados anteriormente en la pestaña administración, donde encontraremos un pequeño menú donde podemos acceder a 
-diferentes acciones CRUD.
-
-Como para esta entrega solo se necesitaba de CREATE Y READ, solo estan funcionales la opcion de crear datos y buscar artículos.
-Si se crean los registros correctamente arrojarán un mensaje conforme lo ha hecho con éxito.
 
 Atributos de ejemplo para comprobar funcionamiento de creación de datos:
 
-UNA PROFESIÓN DE EJEMPLO:
-- Nombre: Periodista
-- Sueldo: 1900
+UN ARTICULO DE EJEMPLO:
+ - Titulo: Curso de Djando Framework
+ - Subtitulo: Django Framework
+ - Cuerpo: "Las mayores ventajas de un sistema desarrollado en DJANGO, es que nos permite..."
+ - Fecha de Publicacion: "2022-09-10"
+ - Temática: "Libre"
+ - Autor: User
 
-UN BLOGGER DE EJEMPLO:
- - Nombre: Juan
- - Apellido: Gómez 
- - Profesión: Periodista (debe de ser un registro del modelo de Profesión)
- - Telefono: 456897523
- - juan@gmail.com
-
-UN ARTÍCULO DE EJEMPLO:
- - Autor: Juan
- - Nombre: Crea tu primer SmartContract
- - Temática: Cryptocurrency
- - Fecha:  2020-10-05  (YYYY-MM-DD)
- - Cantidad páginas: 10
-
-
-Los artículos se deberan filtrar por su temática.
-Al filtrar nos mostrará información de los todos los articulos con la temática filtrada, sin embargo si no hay una temática con la que se corresponda,
-nos mostrará que no ha encontrado nada parecido con esta temática.
+Los artículos se filtran por su contenido de titulo, subtitulo y cuerpo.
+Al filtrar nos mostrará información de los todos los articulos con las palabras encontradas, sin embargo si no hay una palabra con la que se corresponda,
+nos mostrará que no ha encontrado nada parecido.
 
 Ejemplo de búsqueda:
- - tematica = Python = Mostrará la información de los articulo con esa temática.
- - tematica = Cualquier cosa = No se ha encontrado ningún artículo con la temática "tematica escrita"
+ - Palabra = Python = Mostrará la información de los articulo con esa temática.
+ - Pablabra = Cualquier cosa = No se ha encontrado ningún artículo con la temática "tematica escrita"
 
-Como extra, hay una pestaña de "Artículos" con un artículo de ejemplo, esta ahí temporalmente, tenemos pensado poner ahí como un menú con los artículos 
-recomendados y una barra de búsqueda para buscar cualquier articulo del blog y poder acceder a él mediante un botón.
+Hay una sección de "Nosotros" con un artículo con nuestra información.
 
 En cuanto a la herencia HTML, todas las páginas heredan al "nav_bar", la barra de navegacíon y el footer con las redes sociales, en github hemos linkado 
 nuestro propio repositorio.
-
