@@ -56,4 +56,6 @@ En cuanto a la herencia HTML, todas las páginas heredan al "nav_bar", la barra 
 nuestro propio repositorio.
 Se utilizó un template basado en Bootstrap para el diseño. Y se linkeó adicionalmente a un css con nuestros estilos propios.
 
+Se utilizó la versión de Python 3.10.4.
+
 
