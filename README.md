@@ -8,7 +8,10 @@
 </p>
 
 ✔ Video Preview: 
-<a href="https://www.awesomescreenshot.com/video/11476136?key=87c5ef9c52fdbaa0c258cfe4d34c9c58" target="_blank">Blog Python</a>
+<a href="https://www.awesomescreenshot.com/video/11476136?key=87c5ef9c52fdbaa0c258cfe4d34c9c58" target="_blank">Blog Python Video Preview</a>
+
+✔ Extra: WebSite deployed y subido a servidor
+<a href="http://marianc90.pythonanywhere.com/" target="_blank">Blog Python Web</a>
 
 El mismo consta de 3 apps: <br>
 BlogApp - La cual consta del modelo Articulo.<br>
