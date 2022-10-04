@@ -1,7 +1,14 @@
 
 ### En este README explicamos el proyecto final:
 
-# BLOG PYTHON.
+# BLOG PYTHON
+
+<p align="center">
+<img src="https://github.com/marti-fdez/Entrega1_Fernandez_Cuartero_Torres/blob/99ce287b983549e84eb3bb81a8dacba0c9d0396d/Setup%20-%20Awesome%20Screenshot.gif">
+</p>
+
+✔ Video Preview: 
+<a href="https://www.awesomescreenshot.com/video/11476136?key=87c5ef9c52fdbaa0c258cfe4d34c9c58" target="_blank">Blog Python</a>
 
 El mismo consta de 3 apps:
 BlogApp - La cual consta del modelo Articulo.
@@ -46,3 +53,6 @@ Hay una sección de "Nosotros" con un artículo con nuestra información.
 
 En cuanto a la herencia HTML, todas las páginas heredan al "nav_bar", la barra de navegacíon y el footer con las redes sociales, en github hemos linkado 
 nuestro propio repositorio.
+Se utilizó un template basado en Bootstrap para el diseño. Y se linkeó adicionalmente a un css con nuestros estilos propios.
+
+
