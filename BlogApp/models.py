@@ -11,3 +11,5 @@ class Articulo(models.Model):
     imagen = models.ImageField(upload_to="articulos", null=True, blank=True)
     autor = models.ForeignKey(User, on_delete = models.CASCADE)
     tematica = models.CharField(max_length=250)
+    def __str__(self):
+        return f"Articulo de {self.titulo}"

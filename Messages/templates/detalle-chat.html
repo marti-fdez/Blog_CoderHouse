@@ -20,7 +20,7 @@
         {% if object.message_set.all|length > 0%}
         {% for message in object.message_set.all %}
         <li>
-            <p>{{message.text}}</p><br>
+            <p><img width="50px"  class="rounded-circle" src={% if message.author.avatar.imagen %}"{{message.author.avatar.imagen.url}}"{% else%}"{% static 'BlogApp/assets/img/noprofile.jpg' %}"{% endif %}>&nbsp; {{message.text}}</p><br>
             <i>{{message.created}}</i><br>
             <i>{{message.author}}</i><br>
         </li>
