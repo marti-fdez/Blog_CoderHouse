@@ -1,7 +1,7 @@
 
-# En este README explicamos el proyecto final:
+### En este README explicamos el proyecto final:
 
-### BLOG PYTHON.
+# BLOG PYTHON.
 
 El mismo consta de 3 apps:
 BlogApp - La cual consta del modelo Articulo.
